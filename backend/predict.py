@@ -14,13 +14,15 @@ separate (not merged into one blended score) and presented side by side.
 """
 
 import ast
+import os
 from pathlib import Path
 
 import joblib
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 
-MODEL_DIR = Path(__file__).parent.parent / "model"
+# Support both local and Vercel deployment
+MODEL_DIR = Path(os.environ.get('MODEL_PATH', Path(__file__).parent.parent / "model"))
 
 # ---------------------------------------------------------------------------
 # Load all three models' artifacts once at import time

@@ -1,4 +1,5 @@
 from pathlib import Path
+import os
 
 from sqlalchemy import create_engine, Column, Integer, String, DateTime, Text, ForeignKey, Boolean, text
 from sqlalchemy.orm import declarative_base, sessionmaker, relationship
@@ -8,9 +9,15 @@ from config import settings
 
 DATABASE_URL = settings.database_url
 
+# For Vercel serverless, use /tmp directory for SQLite
 if DATABASE_URL.startswith("sqlite:///"):
-    db_path = Path(DATABASE_URL.removeprefix("sqlite:///"))
-    db_path.parent.mkdir(parents=True, exist_ok=True)
+    if os.environ.get('VERCEL'):
+        # On Vercel, use /tmp directory which is writable
+        DATABASE_URL = "sqlite:////tmp/medassist.db"
+    else:
+        # Local development
+        db_path = Path(DATABASE_URL.removeprefix("sqlite:///"))
+        db_path.parent.mkdir(parents=True, exist_ok=True)
 
 connect_args = {"check_same_thread": False} if DATABASE_URL.startswith("sqlite") else {}
 engine = create_engine(DATABASE_URL, connect_args=connect_args)
