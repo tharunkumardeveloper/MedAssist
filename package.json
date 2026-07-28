@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "AI-powered medical diagnosis and triage system",
   "scripts": {
-    "install": "cd web && npm install",
-    "build": "cd web && npm run build",
+    "build": "cd web && npm install && npm run build",
     "dev": "cd web && npm run dev",
     "preview": "cd web && npm run preview"
   },
