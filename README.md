@@ -7,9 +7,16 @@ risk-priority flag with emergency detection, and a downloadable PDF report.
 Providers and admins get a role-gated analytics dashboard with charts across
 all assessments; admins also manage user accounts and roles.
 
-**Disclaimer:** This is a preliminary, AI-generated assessment tool, not a
+**⚠️ Disclaimer:** This is a preliminary, AI-generated assessment tool, not a
 medical diagnosis. It must not be used as a substitute for professional
 healthcare advice.
+
+## 📚 Documentation
+
+- **[QUICKSTART.md](./QUICKSTART.md)** - Get started in 5 minutes
+- **[SETUP.md](./SETUP.md)** - Detailed installation and troubleshooting
+- **[CONTRIBUTING.md](./CONTRIBUTING.md)** - Development and contribution guidelines
+- **[README.md](./README.md)** - Full documentation (you are here)
 
 ## Architecture
 
