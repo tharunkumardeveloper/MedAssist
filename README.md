@@ -61,36 +61,67 @@ frontend/             Legacy Streamlit UI, kept for reference (not actively deve
 
 Self-signup is limited to `patient`/`nurse`/`provider`. All admin-tier roles are provisioned by an existing admin (or promoted by an org-admin, within their allowed scope) via `/admin/users`.
 
-## Local setup
+## Quick Start
 
-Requires Python 3.12 and Node 18+.
+### Automated Setup (Recommended)
+
+**For first-time users**, we provide automated setup scripts:
 
 ```bash
-# Backend
-cd backend
-pip install -r requirements.txt
-cp .env.example .env   # then set SECRET_KEY to: python -c "import secrets; print(secrets.token_hex(32))"
-python -m uvicorn main:app --reload
+# Clone the repository
+git clone https://github.com/tharunkumardeveloper/MedAssist.git
+cd MedAssist
 
-# Frontend (separate terminal)
+# Windows PowerShell (Recommended)
+.\setup.ps1
+
+# Windows CMD
+setup.bat
+
+# After setup, start the application
+.\start.ps1  # or start.bat
+```
+
+The setup script will:
+- Install all Python and Node.js dependencies
+- Create and configure environment files
+- Generate secure SECRET_KEY automatically
+- Set up the database
+
+📖 **For detailed setup instructions and troubleshooting**, see [SETUP.md](./SETUP.md)
+
+### Manual Setup
+
+If you prefer manual setup:
+
+**Backend:**
+```bash
+cd backend
+python -m venv venv
+venv\Scripts\activate      # Windows
+pip install -r requirements.txt
+copy .env.example .env     # Then generate SECRET_KEY
+python -m uvicorn main:app --reload
+```
+
+**Frontend** (new terminal):
+```bash
 cd web
 npm install
 npm run dev
 ```
 
-Backend runs at `http://127.0.0.1:8000` (interactive docs at `/docs`), frontend
-at `http://localhost:5173`. On Windows, always run `python -m uvicorn ...` /
-`npm run dev` — the bare `uvicorn`/`streamlit` executables may not be on PATH
-even when the packages are installed.
+**Access:**
+- Frontend: http://localhost:5173
+- Backend: http://127.0.0.1:8000
+- API Docs: http://127.0.0.1:8000/docs
 
-The backend's `.env` `CORS_ORIGINS` must include whatever origin the frontend
-is served from (`http://localhost:5173` by default) or the browser will block
-every request — the frontend logs a clear console message diagnosing this if
-it happens.
+**Default Admin:**
+- Email: `admin@medassist.local`
+- Password: `ChangeMe123!` (⚠️ change in production!)
 
 An admin account is created automatically on first backend startup using
-`BOOTSTRAP_ADMIN_EMAIL` / `BOOTSTRAP_ADMIN_PASSWORD` from `.env` (defaults to
-`admin@medassist.local` / `ChangeMe123!` — change this before any real use).
+`BOOTSTRAP_ADMIN_EMAIL` / `BOOTSTRAP_ADMIN_PASSWORD` from `.env`.
 
 ## Running with Docker
 
