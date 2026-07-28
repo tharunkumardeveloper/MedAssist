@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.env
+backend/medassist.db
+backend/generated_reports/*.pdf
+backend/data/
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+web/node_modules/
+web/dist/
+web/.env
