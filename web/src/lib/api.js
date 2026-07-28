@@ -1,6 +1,10 @@
 import axios from 'axios'
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'
+// In production (Vercel), API is at /api
+// In development, use VITE_API_URL or default localhost
+const API_URL = import.meta.env.PROD 
+  ? '/api'  // Production: relative path for Vercel serverless functions
+  : (import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000')
 
 export const api = axios.create({ baseURL: API_URL })
 

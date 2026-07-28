@@ -1,0 +1,24 @@
+{
+  "name": "medassist",
+  "version": "1.0.0",
+  "description": "AI-powered medical diagnosis and triage system",
+  "scripts": {
+    "install": "cd web && npm install",
+    "build": "cd web && npm run build",
+    "dev": "cd web && npm run dev",
+    "preview": "cd web && npm run preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tharunkumardeveloper/MedAssist.git"
+  },
+  "keywords": [
+    "medical",
+    "ai",
+    "healthcare",
+    "diagnosis",
+    "triage"
+  ],
+  "author": "Tharun Kumar",
+  "license": "MIT"
+}
